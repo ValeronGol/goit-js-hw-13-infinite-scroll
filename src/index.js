@@ -12,8 +12,9 @@ const refs = {
   searchForm: document.querySelector('.search-form'),
   imagesContainer: document.querySelector('.gallery'),
 };
+
 refs.searchForm.addEventListener('submit', onSearch);
-window.addEventListener("scroll", infiniteScroll);
+window.addEventListener('scroll', infiniteScroll);
 
 async function onSearch(e) {
   e.preventDefault();
@@ -25,7 +26,6 @@ async function onSearch(e) {
   }
   imagesApiService.resetPage();
   clearimagesContainer();
-
   fetchImages();
 }
 
@@ -43,7 +43,6 @@ async function fetchImages() {
     renderCardsimages(cards);
     lightbox.refresh();
     checkImagesCount(totalHits, currentPage, perPage);
-    imagesApiService.incrementPage();
   } catch (error) {
     console.log(error);
     Notiflix.Loading.remove();
@@ -70,7 +69,9 @@ function checkImagesCount(total, current, per) {
 
 function infiniteScroll(){
   const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-  if (scrollTop + clientHeight > scrollHeight - 20) {
+  if (scrollTop + clientHeight > scrollHeight - 10) {
     fetchImages();
+    imagesApiService.incrementPage();
+
   }
 };
