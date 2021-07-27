@@ -1,0 +1,36 @@
+{
+  "name": "goit-js-hw-13-infinite-scroll",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://ValeronGol.github.io/goit-js-hw-13-infinite-scroll",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /goit-js-hw-13-infinite-scroll/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValeronGol/goit-js-hw-13-infinite-scroll.git"
+  },
+  "keywords": [],
+  "author": "Valerij Golovatenko <valeras7777@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValeronGol/goit-js-hw-13-infinite-scroll/issues"
+  },
+  "devDependencies": {
+    "handlebars-loader": "^1.7.1",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "posthtml-include": "^1.6.2",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "handlebars": "^4.7.7",
+    "lodash.debounce": "^4.0.8",
+    "notiflix": "^3.0.1",
+    "simplelightbox": "^2.8.0"
+  }
+}
