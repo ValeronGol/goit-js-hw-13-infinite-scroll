@@ -4,20 +4,25 @@ import ImagesApiService from './js/apiService';
 import Notiflix from 'notiflix';
 import cardsImagesTpl from './templates/cardImage.hbs';
 import SimpleLightbox from 'simplelightbox';
-
 const imagesApiService = new ImagesApiService();
 let lightbox = new SimpleLightbox('.gallery a');
 
 const refs = {
   searchForm: document.querySelector('.search-form'),
   imagesContainer: document.querySelector('.gallery'),
+  sentinel: document.querySelector('#sentinel'),
 };
 
 refs.searchForm.addEventListener('submit', onSearch);
-window.addEventListener('scroll', infiniteScroll);
+let showMore = false;
+const optionsObserver = { rootMargin: '200px' };
+const observer = new IntersectionObserver(onEntry, optionsObserver);
+observer.observe(refs.sentinel);
 
 async function onSearch(e) {
   e.preventDefault();
+  showMore = true;
+  refs.sentinel.textContent = '';
   const searchValue = e.currentTarget.elements.searchQuery.value;
   imagesApiService.query = searchValue.trim();
 
@@ -43,6 +48,7 @@ async function fetchImages() {
     renderCardsimages(cards);
     lightbox.refresh();
     checkImagesCount(totalHits, currentPage, perPage);
+    imagesApiService.incrementPage();
   } catch (error) {
     console.log(error);
     Notiflix.Loading.remove();
@@ -63,15 +69,15 @@ function clearimagesContainer() {
 
 function checkImagesCount(total, current, per) {
   if (current * per >= total) {
+    showMore = false;
     Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
-  } 
+  }
 }
 
-function infiniteScroll(){
-  const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
-  if (scrollTop + clientHeight > scrollHeight - 10) {
-    fetchImages();
-    imagesApiService.incrementPage();
-
-  }
-};
+function onEntry(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && imagesApiService.page !== 1 && showMore) {
+      fetchImages();
+    }
+  });
+}

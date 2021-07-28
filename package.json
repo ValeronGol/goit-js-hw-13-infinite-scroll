@@ -29,6 +29,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "handlebars": "^4.7.7",
+    "infinite-scroll": "^4.0.1",
     "lodash.debounce": "^4.0.8",
     "notiflix": "^3.0.1",
     "simplelightbox": "^2.8.0"

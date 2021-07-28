@@ -108,3 +108,9 @@ button.is-hidden {
 .info-item > span {
   margin-top: 5px;
 }
+#sentinel {
+  margin-bottom: 100px;
+  text-align: center;
+  font-size: 30px;
+  color: rgb(46, 108, 223);
+}
