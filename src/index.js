@@ -22,7 +22,6 @@ observer.observe(refs.sentinel);
 async function onSearch(e) {
   e.preventDefault();
   showMore = true;
-  refs.sentinel.textContent = '';
   const searchValue = e.currentTarget.elements.searchQuery.value;
   imagesApiService.query = searchValue.trim();
 
