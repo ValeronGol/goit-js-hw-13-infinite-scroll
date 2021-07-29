@@ -13,11 +13,11 @@ const refs = {
   sentinel: document.querySelector('#sentinel'),
 };
 
-refs.searchForm.addEventListener('submit', onSearch);
-let showMore = false;
-const optionsObserver = { rootMargin: '200px' };
-const observer = new IntersectionObserver(onEntry, optionsObserver);
-observer.observe(refs.sentinel);
+// refs.searchForm.addEventListener('submit', onSearch);
+// let showMore = false;
+// const optionsObserver = { rootMargin: '200px' };
+// const observer = new IntersectionObserver(onEntry, optionsObserver);
+// observer.observe(refs.sentinel);
 
 async function onSearch(e) {
   e.preventDefault();
@@ -73,10 +73,10 @@ function checkImagesCount(total, current, per) {
   }
 }
 
-function onEntry(entries) {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && imagesApiService.page !== 1 && showMore) {
-      fetchImages();
-    }
-  });
-}
+// function onEntry(entries) {
+//   entries.forEach(entry => {
+//     if (entry.isIntersecting && imagesApiService.page !== 1 && showMore) {
+//       fetchImages();
+//     }
+//   });
+// }
