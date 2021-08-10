@@ -49,7 +49,7 @@ img {
   border-radius: 0.3rem;
   border: 1px solid transparent;
 }
-button.is-hidden {
+.is-hidden {
   display: none;
 }
 
